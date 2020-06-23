@@ -1,0 +1,56 @@
+version: "3.5"
+
+services:
+
+    prometheus:
+        image: prom/prometheus
+        container_name: prometheus
+        volumes:
+            - ./prometheus/:/etc/prometheus/
+            - prometheus_data:/prometheus
+        command:
+            - '--config.file=/etc/prometheus/prometheus.yml'
+            - '--storage.tsdb.path=/prometheus'
+            - '--web.console.libraries=/etc/prometheus/console_libraries'
+            - '--web.console.templates=/etc/prometheus/consoles'
+            - '--storage.tsdb.retention=200h'
+            - '--web.enable-lifecycle'
+        restart: unless-stopped
+        expose:
+            - 9090
+        ports:
+            - "9090:9090"
+        networks:
+            - metrics
+
+
+    pushgateway:
+        image: prom/pushgateway
+        container_name: pushgateway
+        restart: unless-stopped
+        expose:
+            - 9091
+        ports:
+            - "9091:9091"
+        networks:
+            - metrics
+
+    grafana:
+        image: grafana/grafana
+        container_name: grafana
+        restart: unless-stopped
+        expose:
+            - 3000
+        ports:
+            - "3000:3000"
+        networks:
+            - metrics
+        volumes:
+            - ./grafana/:/etc/grafana/provisioning/
+
+networks:
+    metrics:
+        driver: bridge
+
+volumes:
+    prometheus_data: {}
