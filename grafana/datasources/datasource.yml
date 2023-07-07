@@ -10,6 +10,7 @@ datasources:
   access: proxy
   orgId: 1
   url: http://prometheus:9090
+  uid: "prometheus_ds"
   # <string> database password, if used
   password:
   # <string> database user, if used
@@ -27,7 +28,7 @@ datasources:
   # <bool> enable/disable with credentials headers
   withCredentials:
   # <bool> mark as default datasource. Max one per org
-  isDefault:
+  isDefault: true
   # <map> fields that will be converted to json and stored in json_data
   version: 1
   # <bool> allow users to edit datasources from the UI.
