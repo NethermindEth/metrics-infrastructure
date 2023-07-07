@@ -18,7 +18,7 @@ datasources:
   # <string> database name, if used
   database:
   # <bool> enable/disable basic auth
-  basicAuth: true
+  basicAuth: false
   # <string> basic auth username
   basicAuthUser: 
   # <string> basic auth password
