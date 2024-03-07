@@ -1110,7 +1110,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "nethermind_last_difficulty{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_last_difficulty{instance=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1187,7 +1187,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "$__range_s/increase(nethermind_blocks{job=\"nethermind\", instance=~\"$instance\"}[$__range])",
+          "expr": "$__range_s/increase(nethermind_blocks{ instance=~\"$instance\"}[$__range])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1264,7 +1264,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_total_difficulty{job=\"nethermind\", instance=~\"$instance\"}[$__range])",
+          "expr": "increase(nethermind_total_difficulty{ instance=~\"$instance\"}[$__range])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1341,7 +1341,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "nethermind_sync_peers{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_sync_peers{instance=~\"$instance\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Sync Peers: {{client_type}}",
@@ -1417,7 +1417,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "nethermind_blocks{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_blocks{instance=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1494,7 +1494,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "nethermind_total_difficulty{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_total_difficulty{instance=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1604,7 +1604,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_json_rpc_bytes_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_json_rpc_bytes_sent{instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "{{instance}} RPC Sent",
           "range": true,
@@ -1616,7 +1616,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_json_rpc_bytes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_json_rpc_bytes_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} RPC Received",
@@ -1629,7 +1629,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_discovery_bytes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_discovery_bytes_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Dscv Sent",
@@ -1642,7 +1642,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_discovery_bytes_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_discovery_bytes_sent{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Dscv Received",
@@ -1655,7 +1655,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_p2pbytes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_p2pbytes_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} P2P Received",
@@ -1668,7 +1668,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_p2pbytes_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_p2pbytes_sent{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} P2P Sent",
@@ -1770,7 +1770,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(max without (BuildTimestamp,Commit,Version) (nethermind_version{job=\"nethermind\",instance=~\"$instance\"}) != 0) / 100000",
+          "expr": "(max without (BuildTimestamp,Commit,Version) (nethermind_version{instance=~\"$instance\"}) != 0) / 100000",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -2074,7 +2074,7 @@
       "pluginVersion": "10.3.1",
       "targets": [
         {
-          "expr": "nethermind_blocks_sealed{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_blocks_sealed{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} ",
           "refId": "A"
@@ -2134,7 +2134,7 @@
       "pluginVersion": "10.3.1",
       "targets": [
         {
-          "expr": "nethermind_failed_block_seals{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_failed_block_seals{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} ",
           "refId": "A"
@@ -2229,7 +2229,7 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "nethermind_au_ra_step{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_au_ra_step{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} ",
@@ -2287,7 +2287,7 @@
       "pluginVersion": "10.3.1",
       "targets": [
         {
-          "expr": "nethermind_can_produce_blocks{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_can_produce_blocks{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} ",
           "refId": "A"
@@ -2344,7 +2344,7 @@
       "pluginVersion": "10.3.1",
       "targets": [
         {
-          "expr": "nethermind_reported_malicious_misbehaviour{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_reported_malicious_misbehaviour{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} ",
@@ -2440,7 +2440,7 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "nethermind_sealed_transactions{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_sealed_transactions{instance=~\"$instance\"}",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -2499,7 +2499,7 @@
       "pluginVersion": "10.3.1",
       "targets": [
         {
-          "expr": "nethermind_reported_benign_misbehaviour{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_reported_benign_misbehaviour{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} ",
@@ -2557,7 +2557,7 @@
       "pluginVersion": "10.3.1",
       "targets": [
         {
-          "expr": "nethermind_validators_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_validators_count{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} ",
@@ -2653,7 +2653,7 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "nethermind_reveal_number{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_reveal_number{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} ",
@@ -2749,7 +2749,7 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "nethermind_emit_initiate_change{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_emit_initiate_change{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} ",
@@ -2845,7 +2845,7 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "nethermind_commit_hash_transaction{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_commit_hash_transaction{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} ",
@@ -2963,7 +2963,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "process_working_set_bytes{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "process_working_set_bytes{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Total Memory",
           "range": true,
@@ -2976,7 +2976,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "dotnet_total_memory_bytes{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "dotnet_total_memory_bytes{instance=~\"$instance\"}",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -2990,7 +2990,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "dotnet_total_memory_bytes{job=\"nethermind\",instance=~\"$instance\"} -   nethermind_memory_used_by_cache{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "dotnet_total_memory_bytes{instance=~\"$instance\"} -   nethermind_memory_used_by_cache{instance=~\"$instance\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -3005,7 +3005,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_total_memory_size{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_total_memory_size{instance=~\"$instance\"})",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -3018,7 +3018,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_block_cache_memory_size{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_block_cache_memory_size{instance=~\"$instance\"})",
           "hide": false,
           "legendFormat": "{{instance}} DB Blockcache",
           "range": true,
@@ -3030,7 +3030,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_index_filter_memory_size{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_index_filter_memory_size{instance=~\"$instance\"})",
           "hide": false,
           "legendFormat": "{{instance}} DB Index & Filters",
           "range": true,
@@ -3042,7 +3042,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_memtable_memory_size{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_memtable_memory_size{instance=~\"$instance\"})",
           "hide": false,
           "legendFormat": "{{instance}} DB Memtables",
           "range": true,
@@ -3140,7 +3140,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "system_runtime_time_in_gc{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "system_runtime_time_in_gc{instance=~\"$instance\"}",
           "instant": false,
           "legendFormat": "{{instance}} Time GC",
           "range": true,
@@ -3242,7 +3242,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "deriv(dotnet_total_memory_bytes{job=\"nethermind\",instance=~\"$instance\"}[1m]) > 0",
+          "expr": "deriv(dotnet_total_memory_bytes{instance=~\"$instance\"}[1m]) > 0",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Managed Memory",
@@ -3343,7 +3343,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(dotnet_collection_count_total{generation=\"0\",job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(dotnet_collection_count_total{generation=\"0\",instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -3357,7 +3357,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(dotnet_collection_count_total{generation=\"1\",job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(dotnet_collection_count_total{generation=\"1\",instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -3371,7 +3371,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(dotnet_collection_count_total{generation=\"2\",job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(dotnet_collection_count_total{generation=\"2\",instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -3385,7 +3385,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "system_runtime_time_in_gc{generation=\"2\",job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "system_runtime_time_in_gc{generation=\"2\",instance=~\"$instance\"}",
           "hide": false,
           "legendFormat": "{{instance}} __auto",
           "range": true,
@@ -3501,7 +3501,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "nethermind_loaded_from_db_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_loaded_from_db_nodes_count{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} DB",
           "range": true,
@@ -3513,7 +3513,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "nethermind_loaded_from_rlp_cache_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_loaded_from_rlp_cache_nodes_count{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} RLP Cache",
           "range": true,
@@ -3525,7 +3525,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "nethermind_loaded_from_cache_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_loaded_from_cache_nodes_count{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Node Cache",
           "range": true,
@@ -3537,7 +3537,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "nethermind_rlp_cache_hits{job=\"nethermind\", instance=~\"$instance\"}",
+          "expr": "nethermind_rlp_cache_hits{ instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} TrieStore RLP Cache Hits",
           "range": true,
@@ -3635,7 +3635,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "nethermind_memory_used_by_cache{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_memory_used_by_cache{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} ",
           "refId": "A"
@@ -3727,20 +3727,20 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "nethermind_committed_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_committed_nodes_count{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Committed",
           "refId": "G"
         },
         {
-          "expr": "nethermind_persisted_node_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_persisted_node_count{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} Persisted",
           "refId": "A"
         },
         {
-          "expr": "nethermind_pruned_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_pruned_nodes_count{instance=~\"$instance\"}",
           "hide": true,
           "instant": false,
           "interval": "",
@@ -3748,27 +3748,27 @@
           "refId": "B"
         },
         {
-          "expr": "nethermind_cached_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_cached_nodes_count{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Cached",
           "refId": "C"
         },
         {
-          "expr": "nethermind_replaced_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_replaced_nodes_count{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} Replaced",
           "refId": "D"
         },
         {
-          "expr": "nethermind_pruned_persisted_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_pruned_persisted_nodes_count{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} Pruned Persisted",
           "refId": "E"
         },
         {
-          "expr": "nethermind_pruned_transient_nodes_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_pruned_transient_nodes_count{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} Pruned Transient",
@@ -3861,19 +3861,19 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "nethermind_snapshot_persistence_time{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_snapshot_persistence_time{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Persistence",
           "refId": "A"
         },
         {
-          "expr": "nethermind_pruning_time{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_pruning_time{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Pruning",
           "refId": "B"
         },
         {
-          "expr": "nethermind_deep_pruning_time{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_deep_pruning_time{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} ",
           "refId": "C"
@@ -3988,7 +3988,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_last_block_processing_time_in_ms{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_last_block_processing_time_in_ms{instance=~\"$instance\"})",
           "interval": "",
           "legendFormat": "{{instance}} Block time",
           "range": true,
@@ -4190,7 +4190,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_blocks{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_blocks{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -4292,7 +4292,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_sync_peers{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_sync_peers{instance=~\"$instance\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4393,7 +4393,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_state_synced{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_state_synced{instance=~\"$instance\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} State",
@@ -4406,7 +4406,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "rate(nethermind_state_synced{job=\"nethermind\",instance=~\"$instance\"}[60m])*3600",
+          "expr": "rate(nethermind_state_synced{instance=~\"$instance\"}[60m])*3600",
           "interval": "",
           "legendFormat": "{{instance}} State/h",
           "refId": "B"
@@ -4417,7 +4417,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_snap_state_synced{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_snap_state_synced{instance=~\"$instance\"})",
           "hide": false,
           "legendFormat": "{{instance}} SnapState",
           "range": true,
@@ -4430,7 +4430,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "rate(nethermind_snap_state_synced{job=\"nethermind\",instance=~\"$instance\"}[60m])*3600",
+          "expr": "rate(nethermind_snap_state_synced{instance=~\"$instance\"}[60m])*3600",
           "hide": false,
           "legendFormat": "{{instance}} SnapState/h",
           "range": true,
@@ -4530,7 +4530,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "nethermind_snap_synced_storage_slots{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_snap_synced_storage_slots{instance=~\"$instance\"}",
           "hide": false,
           "legendFormat": "{{instance}} Storage slots",
           "range": true,
@@ -4543,7 +4543,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "nethermind_snap_synced_accounts{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_snap_synced_accounts{instance=~\"$instance\"}",
           "legendFormat": "{{instance}} Accounts",
           "range": true,
           "refId": "A"
@@ -4554,7 +4554,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "nethermind_snap_synced_codes{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_snap_synced_codes{instance=~\"$instance\"}",
           "hide": false,
           "legendFormat": "{{instance}} Codes",
           "range": true,
@@ -4649,19 +4649,19 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "nethermind_fast_headers{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_fast_headers{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Headers",
           "refId": "A"
         },
         {
-          "expr": "nethermind_fast_bodies{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_fast_bodies{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Bodies",
           "refId": "B"
         },
         {
-          "expr": "nethermind_fast_receipts{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_fast_receipts{instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{instance}} Receipts",
           "refId": "C"
@@ -4766,7 +4766,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "nethermind_blocks{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_blocks{instance=~\"$instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{instance}} Block Number",
@@ -4867,7 +4867,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(process_cpu_seconds_total{job=\"nethermind\",instance=~\"$instance\"}[$__interval])",
+          "expr": "rate(process_cpu_seconds_total{instance=~\"$instance\"}[$__interval])",
           "legendFormat": "{{instance}} CPU time",
           "range": true,
           "refId": "A"
@@ -5059,7 +5059,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_json_rpc_requests{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_json_rpc_requests{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": true,
           "instant": false,
@@ -5074,7 +5074,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_json_rpc_successes{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_json_rpc_successes{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -5088,7 +5088,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_json_rpc_errors{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_json_rpc_errors{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -5102,7 +5102,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_json_rpc_request_deserialization_failures{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_json_rpc_request_deserialization_failures{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Deserialization Failures",
@@ -5115,7 +5115,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_json_rpc_invalid_requests{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_json_rpc_invalid_requests{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Invalid Requests",
@@ -5179,7 +5179,7 @@
       "pluginVersion": "10.3.1",
       "targets": [
         {
-          "expr": "nethermind_json_rpc_requests{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_json_rpc_requests{instance=~\"$instance\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -5189,7 +5189,7 @@
           "refId": "B"
         },
         {
-          "expr": "nethermind_json_rpc_successes{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_json_rpc_successes{instance=~\"$instance\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -5198,7 +5198,7 @@
           "refId": "C"
         },
         {
-          "expr": "nethermind_json_rpc_errors{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_json_rpc_errors{instance=~\"$instance\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -5207,7 +5207,7 @@
           "refId": "E"
         },
         {
-          "expr": "nethermind_json_rpc_request_deserialization_failures{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_json_rpc_request_deserialization_failures{instance=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -5215,7 +5215,7 @@
           "refId": "A"
         },
         {
-          "expr": "nethermind_json_rpc_invalid_requests{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_json_rpc_invalid_requests{instance=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -5334,7 +5334,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_incoming_connections{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_incoming_connections{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Incoming Connections",
@@ -5347,7 +5347,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_outgoing_connections{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_outgoing_connections{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Outgoing Connections",
@@ -5360,7 +5360,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_handshakes{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_handshakes{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Handshakes",
@@ -5373,7 +5373,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_hellos_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_hellos_sent{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Hellos Sent",
@@ -5386,7 +5386,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_hellos_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_hellos_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Hellos Received",
@@ -5399,7 +5399,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_statuses_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_statuses_sent{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -5413,7 +5413,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_statuses_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_statuses_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Statuses Received",
@@ -5515,7 +5515,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -5530,7 +5530,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_known{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_known{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -5544,7 +5544,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_pending_transactions_discarded{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_discarded{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
@@ -5558,7 +5558,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_too_far_in_future{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_too_far_in_future{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Too far in future",
@@ -5572,7 +5572,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_too_low_fee{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_too_low_fee{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Too low fee",
@@ -5586,7 +5586,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_added{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_added{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Added (all)",
@@ -5600,7 +5600,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending1559transactions_added{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending1559transactions_added{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Added (1559)",
@@ -5614,7 +5614,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_evicted{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_evicted{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Evicted",
@@ -5628,7 +5628,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_sent{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -5643,7 +5643,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_hashes_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_hashes_sent{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Sent hashes",
@@ -5743,7 +5743,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_too_many_peers_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_too_many_peers_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Too Many Peers",
@@ -5756,7 +5756,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_client_quitting_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_client_quitting_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Client Quitting",
@@ -5769,7 +5769,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_receive_message_timeout_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_receive_message_timeout_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Receive Timeouts",
@@ -5782,7 +5782,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_already_connected_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_already_connected_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Already Connected",
@@ -5795,7 +5795,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_breach_of_protocol_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_breach_of_protocol_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Breach of Protocol",
@@ -5808,7 +5808,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_incompatible_p2pdisconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_incompatible_p2pdisconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Incompatible P2P",
@@ -5821,7 +5821,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_null_node_identity_disconnects{job=\"nethermind\",_instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_null_node_identity_disconnects{_instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Null Identity",
@@ -5834,7 +5834,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_unexpected_identity_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_unexpected_identity_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Unexpected Identity",
@@ -5847,7 +5847,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_useless_peer_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_useless_peer_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Useless Peer",
@@ -5860,7 +5860,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_diconnect_requested_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_diconnect_requested_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Requested",
@@ -5873,7 +5873,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_tcp_subsystem_error_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_tcp_subsystem_error_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} TCP Error",
@@ -5886,7 +5886,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_same_as_self_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_same_as_self_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Same as Self",
@@ -5899,7 +5899,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_other_disconnects{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_other_disconnects{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Other",
@@ -6000,7 +6000,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth62get_block_headers_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth62get_block_headers_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6015,7 +6015,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth62block_headers_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth62block_headers_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6030,7 +6030,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth62get_block_bodies_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth62get_block_bodies_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6045,7 +6045,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth62block_bodies_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth62block_bodies_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6060,7 +6060,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth62transactions_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth62transactions_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6075,7 +6075,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth65new_pooled_transaction_hashes_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth65new_pooled_transaction_hashes_sent{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} TxHashes sent eth65",
@@ -6089,7 +6089,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth65new_pooled_transaction_hashes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth65new_pooled_transaction_hashes_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} TxHashes received eth65",
@@ -6103,7 +6103,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth65get_pooled_transactions_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth65get_pooled_transactions_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Txs requests received eth65",
@@ -6117,7 +6117,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth65get_pooled_transactions_requested{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth65get_pooled_transactions_requested{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Txs requested eth65",
@@ -6131,7 +6131,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth65pooled_transactions_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth65pooled_transactions_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Txs received eth65",
@@ -6145,7 +6145,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth62new_block_hashes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth62new_block_hashes_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6160,7 +6160,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth62new_block_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth62new_block_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6175,7 +6175,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth63get_node_data_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth63get_node_data_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -6190,7 +6190,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth63node_data_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth63node_data_received{instance=~\"$instance\"}[1m])",
           "interval": "",
           "legendFormat": "{{instance}} NodeData eth63",
           "range": true,
@@ -6203,7 +6203,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth63get_receipts_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth63get_receipts_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6218,7 +6218,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth63receipts_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth63receipts_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Receipts eth63",
@@ -6232,7 +6232,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66get_block_headers_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66get_block_headers_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} GetBlockHeaders eth66",
@@ -6246,7 +6246,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66block_headers_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66block_headers_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} BlockHeaders eth66",
@@ -6260,7 +6260,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66get_block_bodies_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66get_block_bodies_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} GetBlockBodies eth66",
@@ -6274,7 +6274,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66block_bodies_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66block_bodies_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} BlockBodies eth66",
@@ -6288,7 +6288,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66get_pooled_transactions_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66get_pooled_transactions_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Txs requests received eth66",
@@ -6302,7 +6302,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66get_pooled_transactions_requested{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66get_pooled_transactions_requested{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Txs requested eth66",
@@ -6316,7 +6316,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66pooled_transactions_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66pooled_transactions_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Txs received eth66",
@@ -6330,7 +6330,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66get_node_data_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66get_node_data_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} GetNodeData eth66",
@@ -6344,7 +6344,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66node_data_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66node_data_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} NodeData eth66",
@@ -6358,7 +6358,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66get_receipts_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66get_receipts_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} GetReceipts eth66",
@@ -6372,7 +6372,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_eth66receipts_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_eth66receipts_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} Receipts eth66",
@@ -6473,7 +6473,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_get_account_range_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_get_account_range_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6488,7 +6488,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_get_account_range_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_get_account_range_sent{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6503,7 +6503,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_account_range_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_account_range_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6518,7 +6518,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_get_storage_ranges_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_get_storage_ranges_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6533,7 +6533,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_get_storage_ranges_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_get_storage_ranges_sent{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6548,7 +6548,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_storage_ranges_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_storage_ranges_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6563,7 +6563,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_get_byte_codes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_get_byte_codes_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -6578,7 +6578,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_get_byte_codes_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_get_byte_codes_sent{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -6594,7 +6594,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_byte_codes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_byte_codes_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "legendFormat": "{{instance}} ByteCodes received",
           "range": true,
@@ -6607,7 +6607,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_get_trie_nodes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_get_trie_nodes_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "legendFormat": "{{instance}} GetTrieNodes received",
           "range": true,
@@ -6620,7 +6620,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_get_trie_nodes_sent{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_get_trie_nodes_sent{instance=~\"$instance\"}[1m])",
           "hide": false,
           "legendFormat": "{{instance}} GetTrieNodes sent",
           "range": true,
@@ -6633,7 +6633,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_snap_trie_nodes_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_snap_trie_nodes_received{instance=~\"$instance\"}[1m])",
           "hide": false,
           "legendFormat": "{{instance}} TrieNodes received",
           "range": true,
@@ -6743,14 +6743,14 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "rate(nethermind_receipts_db_reads{job=\"nethermind\",instance=~\"$instance\"}[10s])",
+          "expr": "rate(nethermind_receipts_db_reads{instance=~\"$instance\"}[10s])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Reads",
           "refId": "A"
         },
         {
-          "expr": "rate(nethermind_receipts_db_writes{job=\"nethermind\",instance=~\"$instance\"}[10s])",
+          "expr": "rate(nethermind_receipts_db_writes{instance=~\"$instance\"}[10s])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Writes",
@@ -6848,7 +6848,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_code_db_cache{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_code_db_cache{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -6862,7 +6862,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_code_db_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_code_db_reads{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Reads",
@@ -6875,7 +6875,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_code_db_writes{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_code_db_writes{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Writes",
@@ -6974,7 +6974,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_state_tree_cache_hits{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_state_tree_cache_hits{instance=~\"$instance\"}[1m])",
           "hide": false,
           "instant": false,
           "legendFormat": "{{instance}} Cache Reads",
@@ -6987,7 +6987,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_state_tree_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_state_tree_reads{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Reads",
@@ -7000,7 +7000,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_read_only_state_tree_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_read_only_state_tree_reads{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -7014,7 +7014,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_state_tree_writes{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_state_tree_writes{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Writes",
@@ -7113,7 +7113,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_state_db_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_state_db_reads{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Reads",
@@ -7127,7 +7127,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_state_db_writes{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_state_db_writes{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -7142,7 +7142,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_state_db_in_pruning_writes{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_state_db_in_pruning_writes{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -7243,7 +7243,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_block_infos_db_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_block_infos_db_reads{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Reads",
@@ -7256,7 +7256,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_block_infos_db_writes{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_block_infos_db_writes{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Writes",
@@ -7355,7 +7355,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_storage_tree_cache_hits{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_storage_tree_cache_hits{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -7369,7 +7369,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_storage_tree_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_storage_tree_reads{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Reads",
@@ -7382,7 +7382,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_read_only_storage_tree_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_read_only_storage_tree_reads{instance=~\"$instance\"}[1m])",
           "hide": false,
           "instant": false,
           "legendFormat": "{{instance}} Reader Reads",
@@ -7395,7 +7395,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_storage_tree_writes{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_storage_tree_writes{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Writes",
@@ -7494,7 +7494,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_tree_node_rlp_decodings{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_tree_node_rlp_decodings{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} RLP.Encode",
@@ -7507,7 +7507,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_tree_node_rlp_encodings{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_tree_node_rlp_encodings{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} RLP.Decode",
@@ -7520,7 +7520,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(nethermind_tree_node_hash_calculations{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_tree_node_hash_calculations{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Keccak",
@@ -7614,14 +7614,14 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "rate(nethermind_other_db_reads{job=\"nethermind\",instance=~\"$instance\"}[10s])",
+          "expr": "rate(nethermind_other_db_reads{instance=~\"$instance\"}[10s])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Reads",
           "refId": "A"
         },
         {
-          "expr": "rate(nethermind_other_db_writes{job=\"nethermind\",instance=~\"$instance\"}[10s])",
+          "expr": "rate(nethermind_other_db_writes{instance=~\"$instance\"}[10s])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Writes",
@@ -7714,7 +7714,7 @@
       "pluginVersion": "11.0.0-67429",
       "targets": [
         {
-          "expr": "rate(nethermind_blocks_db_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])*60",
+          "expr": "rate(nethermind_blocks_db_reads{instance=~\"$instance\"}[1m])*60",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -7722,7 +7722,7 @@
           "refId": "A"
         },
         {
-          "expr": "rate(nethermind_blocks_db_writes{job=\"nethermind\",instance=~\"$instance\"}[1m])*60",
+          "expr": "rate(nethermind_blocks_db_writes{instance=~\"$instance\"}[1m])*60",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}} Writes",
@@ -7820,7 +7820,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(nethermind_header_db_reads{job=\"nethermind\",instance=~\"$instance\"}[1m])*60",
+          "expr": "rate(nethermind_header_db_reads{instance=~\"$instance\"}[1m])*60",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -7835,7 +7835,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(nethermind_header_db_writes{job=\"nethermind\",instance=~\"$instance\"}[1m])*60",
+          "expr": "rate(nethermind_header_db_writes{instance=~\"$instance\"}[1m])*60",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -8147,7 +8147,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "nethermind_transaction_count{job=\"nethermind\",instance=~\"$instance\"}",
+          "expr": "nethermind_transaction_count{instance=~\"$instance\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -8346,7 +8346,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_dark_pool_ratio_level1{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_dark_pool_ratio_level1{instance=~\"$instance\"})",
           "interval": "",
           "legendFormat": "{{instance}} Level1 (not known)",
           "range": true,
@@ -8359,7 +8359,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_dark_pool_ratio_level2{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_dark_pool_ratio_level2{instance=~\"$instance\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} level2 (not pending)",
@@ -8459,7 +8459,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_eip1559transactions_ratio{job=\"nethermind\",instance=~\"$instance\"})",
+          "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_eip1559transactions_ratio{instance=~\"$instance\"})",
           "interval": "",
           "legendFormat": "{{instance}} ",
           "range": true,
@@ -8558,7 +8558,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(nethermind_pending_transactions_received{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_received{instance=~\"$instance\"}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -8572,7 +8572,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "increase(nethermind_pending_transactions_discarded{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_discarded{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} discarded",
@@ -8586,7 +8586,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "increase(nethermind_pending_transactions_known{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_known{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -8601,7 +8601,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "increase(nethermind_pending_transactions_too_low_fee{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_too_low_fee{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -8616,7 +8616,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "increase(nethermind_pending_transactions_added{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_added{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} added",
@@ -8630,7 +8630,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "increase(nethermind_pending_transactions_evicted{job=\"nethermind\",instance=~\"$instance\"}[1m])",
+          "expr": "increase(nethermind_pending_transactions_evicted{instance=~\"$instance\"}[1m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{instance}} evicted",
