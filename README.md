@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Nethermind `v1.19.0` or later.
+* Nethermind `v1.26.0` or later.
 * Docker with Docker Compose plugin installed. ([Installation Guide](https://docs.docker.com/desktop/))
 
 ## Quick Guide
