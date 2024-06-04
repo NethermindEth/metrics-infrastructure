@@ -1,0 +1,30 @@
+name: Update Nethermind Dashboard
+on:
+  workflow_dispatch:
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pull Grafana Dashboard
+        run: |
+          mkdir -p temp
+          curl -H "Authorization: Bearer ${{ secrets.GRAFANA_API_KEY }}" \
+          -H "Accept: application/json" \
+          -H "Content-Type: application/json" \
+          -o dashboard.json \
+          ${{ secrets.GRAFANA_DASHBOARD_URL}} | jq .dashboard > temp/dashboard.json
+
+      - name: Update Dashboard
+        run: |
+          python scripts/update-dashboard.py
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "feat: update nethermind dashboard"
+          commit-message: "feat: update nethermind dashboard"
+          branch: chore/dashboard-update
