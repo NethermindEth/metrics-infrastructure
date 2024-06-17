@@ -9,6 +9,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Authenticate App
+        id: gh-app
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Pull Grafana Dashboard
         run: |
           mkdir -p temp
@@ -24,7 +31,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
+          token: ${{ steps.gh-app.outputs.token }}
           title: "feat: update nethermind dashboard"
           commit-message: "feat: update nethermind dashboard"
           branch: chore/dashboard-update
