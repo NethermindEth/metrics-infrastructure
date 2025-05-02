@@ -1564,7 +1564,7 @@
             "h": 12,
             "w": 24,
             "x": 0,
-            "y": 41
+            "y": 146
           },
           "id": 190,
           "options": {
@@ -1685,7 +1685,7 @@
             "h": 10,
             "w": 24,
             "x": 0,
-            "y": 77
+            "y": 230
           },
           "id": 155,
           "options": {
@@ -1810,7 +1810,7 @@
             "h": 14,
             "w": 24,
             "x": 0,
-            "y": 42
+            "y": 147
           },
           "id": 65,
           "options": {
@@ -1994,7 +1994,7 @@
             "h": 10,
             "w": 24,
             "x": 0,
-            "y": 80
+            "y": 233
           },
           "id": 161,
           "options": {
@@ -2100,7 +2100,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 90
+            "y": 243
           },
           "id": 159,
           "interval": "1m",
@@ -2209,7 +2209,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 97
+            "y": 250
           },
           "id": 12,
           "options": {
@@ -2312,7 +2312,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 103
+            "y": 256
           },
           "id": 193,
           "options": {
@@ -2424,7 +2424,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 43
+            "y": 196
           },
           "id": 116,
           "options": {
@@ -2559,7 +2559,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 75
+            "y": 228
           },
           "id": 128,
           "options": {
@@ -2659,7 +2659,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 82
+            "y": 235
           },
           "id": 122,
           "options": {
@@ -2831,7 +2831,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 89
+            "y": 242
           },
           "id": 120,
           "options": {
@@ -2986,7 +2986,7 @@
             "h": 9,
             "w": 24,
             "x": 0,
-            "y": 44
+            "y": 197
           },
           "id": 102,
           "options": {
@@ -3090,7 +3090,7 @@
             "h": 9,
             "w": 24,
             "x": 0,
-            "y": 77
+            "y": 230
           },
           "id": 158,
           "options": {
@@ -3191,7 +3191,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 86
+            "y": 239
           },
           "id": 192,
           "options": {
@@ -3307,7 +3307,7 @@
             "h": 5,
             "w": 24,
             "x": 0,
-            "y": 94
+            "y": 247
           },
           "id": 39,
           "options": {
@@ -3412,7 +3412,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 99
+            "y": 252
           },
           "id": 45,
           "options": {
@@ -3518,7 +3518,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 105
+            "y": 258
           },
           "id": 79,
           "options": {
@@ -3657,7 +3657,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 111
+            "y": 264
           },
           "id": 146,
           "options": {
@@ -3785,7 +3785,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 118
+            "y": 271
           },
           "id": 75,
           "options": {
@@ -3915,7 +3915,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 126
+            "y": 279
           },
           "id": 69,
           "options": {
@@ -4021,7 +4021,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 133
+            "y": 286
           },
           "id": 67,
           "interval": "60s",
@@ -4214,7 +4214,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 45
+            "y": 198
           },
           "id": 61,
           "options": {
@@ -4334,7 +4334,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 76
+            "y": 229
           },
           "id": 126,
           "options": {
@@ -4522,7 +4522,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 46
+            "y": 199
           },
           "id": 47,
           "options": {
@@ -4705,7 +4705,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 78
+            "y": 231
           },
           "id": 27,
           "options": {
@@ -4937,7 +4937,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 85
+            "y": 238
           },
           "id": 51,
           "options": {
@@ -5053,7 +5053,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 92
+            "y": 245
           },
           "id": 63,
           "options": {
@@ -5173,7 +5173,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 99
+            "y": 252
           },
           "id": 187,
           "options": {
@@ -5308,7 +5308,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 47
+            "y": 200
           },
           "id": 182,
           "options": {
@@ -5414,7 +5414,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 78
+            "y": 231
           },
           "id": 183,
           "options": {
@@ -5519,7 +5519,7 @@
             "h": 13,
             "w": 24,
             "x": 0,
-            "y": 85
+            "y": 238
           },
           "id": 24,
           "options": {
@@ -5678,7 +5678,7 @@
             "h": 13,
             "w": 24,
             "x": 0,
-            "y": 98
+            "y": 251
           },
           "id": 8,
           "options": {
@@ -5837,7 +5837,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 111
+            "y": 264
           },
           "id": 21,
           "options": {
@@ -5968,7 +5968,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 117
+            "y": 270
           },
           "id": 25,
           "options": {
@@ -6076,7 +6076,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 125
+            "y": 278
           },
           "id": 29,
           "options": {
@@ -6324,7 +6324,7 @@
             "h": 9,
             "w": 24,
             "x": 0,
-            "y": 80
+            "y": 56
           },
           "id": 176,
           "options": {
@@ -6433,7 +6433,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 89
+            "y": 65
           },
           "id": 144,
           "options": {
@@ -6536,7 +6536,7 @@
             "h": 9,
             "w": 24,
             "x": 0,
-            "y": 97
+            "y": 73
           },
           "id": 177,
           "options": {
@@ -6644,7 +6644,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 106
+            "y": 82
           },
           "id": 140,
           "options": {
@@ -6763,7 +6763,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 113
+            "y": 89
           },
           "id": 142,
           "options": {
@@ -6866,7 +6866,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 121
+            "y": 97
           },
           "id": 143,
           "options": {
@@ -7041,7 +7041,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 129
+            "y": 105
           },
           "id": 191,
           "options": {
@@ -7094,7 +7094,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "fieldConfig": {
             "defaults": {
@@ -7154,7 +7154,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 129
+            "y": 105
           },
           "id": 194,
           "options": {
@@ -7173,6 +7173,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_number_of_get_blobs_successes{Instance=~\"$enode\"}",
@@ -7186,7 +7190,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "000000004"
+                "uid": "${prometheus_ds}"
               },
               "disableTextWrap": false,
               "editorMode": "code",
@@ -7234,7 +7238,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 137
+            "y": 113
           },
           "id": 189,
           "options": {
@@ -7302,7 +7306,7 @@
             "h": 8,
             "w": 6,
             "x": 6,
-            "y": 137
+            "y": 113
           },
           "id": 205,
           "options": {
@@ -7408,7 +7412,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 137
+            "y": 113
           },
           "id": 188,
           "options": {
@@ -7496,7 +7500,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 49
+            "y": 202
           },
           "id": 88,
           "options": {
@@ -7563,7 +7567,7 @@
             "h": 8,
             "w": 6,
             "x": 6,
-            "y": 49
+            "y": 202
           },
           "id": 90,
           "options": {
@@ -7668,7 +7672,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 49
+            "y": 202
           },
           "id": 93,
           "maxDataPoints": 1,
@@ -7728,7 +7732,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 81
+            "y": 234
           },
           "id": 92,
           "maxDataPoints": 1,
@@ -7796,7 +7800,7 @@
             "h": 8,
             "w": 6,
             "x": 6,
-            "y": 81
+            "y": 234
           },
           "id": 95,
           "maxDataPoints": 1,
@@ -7902,7 +7906,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 81
+            "y": 234
           },
           "id": 97,
           "maxDataPoints": 1,
@@ -7963,7 +7967,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 89
+            "y": 242
           },
           "id": 94,
           "maxDataPoints": 1,
@@ -8027,7 +8031,7 @@
             "h": 8,
             "w": 6,
             "x": 6,
-            "y": 89
+            "y": 242
           },
           "id": 96,
           "maxDataPoints": 1,
@@ -8133,7 +8137,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 89
+            "y": 242
           },
           "id": 99,
           "maxDataPoints": 1,
@@ -8234,7 +8238,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 97
+            "y": 250
           },
           "id": 100,
           "maxDataPoints": 1,
@@ -8335,7 +8339,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 97
+            "y": 250
           },
           "id": 98,
           "maxDataPoints": 1,
@@ -8444,7 +8448,7 @@
             "h": 10,
             "w": 12,
             "x": 0,
-            "y": 50
+            "y": 203
           },
           "id": 179,
           "options": {
@@ -8541,7 +8545,7 @@
             "h": 10,
             "w": 12,
             "x": 12,
-            "y": 50
+            "y": 203
           },
           "id": 181,
           "options": {
@@ -8635,7 +8639,7 @@
             "h": 10,
             "w": 12,
             "x": 0,
-            "y": 84
+            "y": 237
           },
           "id": 185,
           "options": {
@@ -8729,7 +8733,7 @@
             "h": 10,
             "w": 12,
             "x": 12,
-            "y": 84
+            "y": 237
           },
           "id": 186,
           "options": {
@@ -8823,7 +8827,7 @@
             "h": 10,
             "w": 12,
             "x": 0,
-            "y": 94
+            "y": 247
           },
           "id": 184,
           "options": {
@@ -8874,7 +8878,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Number of Shutter transactions observed on chain",
           "fieldConfig": {
@@ -8938,7 +8942,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 51
+            "y": 148
           },
           "id": 199,
           "options": {
@@ -8957,6 +8961,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_shutter_transactions{Instance=~\"$enode\"}",
@@ -8974,7 +8982,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Amount of gas from Shutter transactions observed on chain",
           "fieldConfig": {
@@ -9035,7 +9043,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 51
+            "y": 148
           },
           "id": 201,
           "options": {
@@ -9054,6 +9062,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_shutter_encrypted_gas_used{Instance=~\"$enode\"}",
@@ -9071,7 +9083,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Number of Shutter Keypers",
           "fieldConfig": {
@@ -9099,7 +9111,7 @@
             "h": 8,
             "w": 3,
             "x": 0,
-            "y": 59
+            "y": 156
           },
           "id": 196,
           "options": {
@@ -9122,6 +9134,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_shutter_keypers{Instance=~\"$enode\"}",
@@ -9139,7 +9155,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Number of Shutter Keypers to form a quorum",
           "fieldConfig": {
@@ -9167,7 +9183,7 @@
             "h": 8,
             "w": 3,
             "x": 3,
-            "y": 59
+            "y": 156
           },
           "id": 197,
           "options": {
@@ -9190,6 +9206,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_shutter_threshold{Instance=~\"$enode\"}",
@@ -9207,7 +9227,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Number of Shutter Keyper set reconfigurations",
           "fieldConfig": {
@@ -9235,7 +9255,7 @@
             "h": 8,
             "w": 3,
             "x": 6,
-            "y": 59
+            "y": 156
           },
           "id": 198,
           "options": {
@@ -9258,6 +9278,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_shutter_eon{Instance=~\"$enode\"}",
@@ -9275,7 +9299,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Total number of Shutter transactions on this chain",
           "fieldConfig": {
@@ -9303,7 +9327,7 @@
             "h": 8,
             "w": 3,
             "x": 9,
-            "y": 59
+            "y": 156
           },
           "id": 200,
           "options": {
@@ -9326,6 +9350,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "expr": "nethermind_shutter_tx_pointer{Instance=~\"$enode\"}",
@@ -9343,7 +9371,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Amount of invalid Shutter transactions observed onchain",
           "fieldConfig": {
@@ -9404,7 +9432,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 59
+            "y": 156
           },
           "id": 202,
           "options": {
@@ -9423,6 +9451,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_shutter_bad_transactions{Instance=~\"$enode\"}",
@@ -9440,7 +9472,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Time offset between start of slot and when keys are received",
           "fieldConfig": {
@@ -9505,7 +9537,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 67
+            "y": 164
           },
           "id": 203,
           "options": {
@@ -9524,6 +9556,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_shutter_keys_received_time_offset{Instance=~\"$enode\"}",
@@ -9541,7 +9577,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000004"
+            "uid": "${prometheus_ds}"
           },
           "description": "Missed Shutter proposals due to not receiving keys",
           "fieldConfig": {
@@ -9602,7 +9638,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 67
+            "y": 164
           },
           "id": 204,
           "options": {
@@ -9621,6 +9657,10 @@
           "pluginVersion": "12.0.0-86898",
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${prometheus_ds}"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "nethermind_shutter_keys_missed{Instance=~\"$enode\"}",
@@ -9737,5 +9777,5 @@
   "timezone": "utc",
   "title": "Nethermind Dashboard",
   "uid": "nethermind_dashboard",
-  "version": 5
+  "version": 6
 }
