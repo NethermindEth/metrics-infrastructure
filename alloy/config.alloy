@@ -1,0 +1,122 @@
+// Grafana Alloy configuration for the local Nethermind monitoring stack.
+//
+// Alloy collects two things from a Nethermind node and forwards them to the
+// local backends that ship with this repo:
+//   - metrics: scraped from the node's Prometheus endpoint -> local Prometheus
+//   - logs:    read from the node's Docker container stdout -> local Loki
+//
+// Everything is driven by environment variables (see env.example) so the
+// defaults work out of the box for a node running as a Docker container on the
+// same host. See the README for the bare-process and remote-node scenarios.
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Outputs — local Loki and Prometheus (no auth; services live on the same
+// docker network as Alloy).
+// ──────────────────────────────────────────────────────────────────────────────
+
+loki.write "loki_endpoint" {
+	endpoint {
+		url = "http://loki:3100/loki/api/v1/push"
+	}
+}
+
+prometheus.remote_write "metrics_endpoint" {
+	endpoint {
+		url = "http://prometheus:9090/api/v1/write"
+	}
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Logs — Nethermind container stdout via the Docker socket.
+//
+// Requires the Docker socket to be mounted into the Alloy container. For a node
+// that does not run in Docker, replace this block with a file source — see the
+// commented example at the bottom of this file.
+// ──────────────────────────────────────────────────────────────────────────────
+
+discovery.docker "nethermind_container" {
+	host = "unix:///var/run/docker.sock"
+
+	filter {
+		name   = "name"
+		values = [coalesce(sys.env("EXECUTION_CONTAINER_NAME"), "nethermind")]
+	}
+}
+
+discovery.relabel "nethermind_log_labels" {
+	targets = discovery.docker.nethermind_container.targets
+
+	rule {
+		target_label = "node"
+		replacement  = coalesce(sys.env("NODE_NAME"), "nethermind")
+	}
+
+	rule {
+		target_label = "network"
+		replacement  = coalesce(sys.env("NETWORK"), "unknown")
+	}
+
+	rule {
+		target_label = "client"
+		replacement  = coalesce(sys.env("CLIENT"), "nethermind")
+	}
+}
+
+loki.source.docker "nethermind_logs" {
+	host       = "unix:///var/run/docker.sock"
+	targets    = discovery.relabel.nethermind_log_labels.output
+	forward_to = [loki.write.loki_endpoint.receiver]
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Metrics — Nethermind Prometheus endpoint.
+//
+// Defaults to host.docker.internal:8008, i.e. a node exposing metrics on the
+// host (Docker container or bare process). For a remote node set
+// NETHERMIND_METRICS_ADDRESS to <node-ip>:<port>.
+// ──────────────────────────────────────────────────────────────────────────────
+
+prometheus.scrape "nethermind_metrics" {
+	targets = [{
+		__address__ = coalesce(sys.env("NETHERMIND_METRICS_ADDRESS"), "host.docker.internal:8008"),
+	}]
+	forward_to = [prometheus.relabel.nethermind_metric_labels.receiver]
+
+	scrape_interval = "15s"
+}
+
+prometheus.relabel "nethermind_metric_labels" {
+	forward_to = [prometheus.remote_write.metrics_endpoint.receiver]
+
+	// Nethermind already sets Instance/Network from its own Metrics.NodeName, so
+	// only the extra identifying labels are added here.
+	rule {
+		target_label = "node"
+		replacement  = coalesce(sys.env("NODE_NAME"), "nethermind")
+	}
+
+	rule {
+		target_label = "client"
+		replacement  = coalesce(sys.env("CLIENT"), "nethermind")
+	}
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Alternative log source — node NOT running in Docker (scenario B in the README).
+//
+// Comment out the discovery.docker / loki.source.docker blocks above and enable
+// the two blocks below, pointing NETHERMIND_LOG_PATH at the node's log file(s).
+// ──────────────────────────────────────────────────────────────────────────────
+
+// local.file_match "nethermind_log_files" {
+// 	path_targets = [{
+// 		__path__ = coalesce(sys.env("NETHERMIND_LOG_PATH"), "/var/log/nethermind/*.log"),
+// 		node     = coalesce(sys.env("NODE_NAME"), "nethermind"),
+// 		client   = coalesce(sys.env("CLIENT"), "nethermind"),
+// 	}]
+// }
+
+// loki.source.file "nethermind_log_files" {
+// 	targets    = local.file_match.nethermind_log_files.targets
+// 	forward_to = [loki.write.loki_endpoint.receiver]
+// }

@@ -1,1 +1,4 @@
 temp
+.env
+prometheus_data
+loki_data

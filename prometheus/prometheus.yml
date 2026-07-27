@@ -1,9 +1,6 @@
 global:
-  scrape_interval:     5s
-  evaluation_interval: 5s
+  scrape_interval:     15s
+  evaluation_interval: 15s
 
-scrape_configs:
-  - job_name: 'pushgateway'
-    honor_labels: true
-    static_configs:
-    - targets: ['pushgateway:9091']
+# Nethermind metrics arrive via remote-write from Grafana Alloy
+# (see --web.enable-remote-write-receiver), so no scrape jobs are needed here.
