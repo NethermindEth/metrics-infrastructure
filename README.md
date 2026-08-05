@@ -64,6 +64,12 @@ No changes needed beyond `EXECUTION_CONTAINER_NAME`:
 - **Logs**: Alloy discovers the container through the mounted Docker socket and
   reads its stdout.
 
+> **Security note**: log collection mounts `/var/run/docker.sock` into the Alloy
+> container. Access to the Docker socket is effectively root-equivalent control
+> of the host, so only run this stack on a host you trust. If you don't need
+> container logs, remove the `docker.sock` mount from the `alloy` service in
+> `docker-compose.yml` (metrics collection does not require it).
+
 ### B. Node runs as a bare process / systemd service on the same host
 
 - **Metrics**: still work via `host.docker.internal:8008` — no change.

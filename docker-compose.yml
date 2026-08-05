@@ -85,5 +85,4 @@ networks:
     name: nethermind-metrics
 
 volumes:
-  prometheus_data: {}
   loki_data: {}
