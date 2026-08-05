@@ -2,36 +2,83 @@ name: Update Nethermind Dashboard
 on:
   workflow_dispatch:
 
+env:
+  DASHBOARD: grafana/provisioning/dashboards/nethermind.json
+  BRANCH: chore/dashboard-update
+
 jobs:
   update-dashboard:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Authenticate App
         id: gh-app
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
-      - name: Pull Grafana Dashboard
-        run: |
-          mkdir -p temp
-          curl -H "Authorization: Bearer ${{ secrets.GRAFANA_API_KEY }}" \
-          -H "Accept: application/json" \
-          -H "Content-Type: application/json" \
-          ${{ secrets.GRAFANA_DASHBOARD_URL}} | jq .dashboard > temp/dashboard.json
-
-      - name: Update Dashboard
-        run: |
-          python scripts/update-dashboard.py
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
           token: ${{ steps.gh-app.outputs.token }}
-          title: "feat: update nethermind dashboard"
-          commit-message: "feat: update nethermind dashboard"
-          branch: chore/dashboard-update
+
+      - name: Pull Grafana Dashboard
+        env:
+          GRAFANA_DASHBOARD_URL: ${{ secrets.GRAFANA_DASHBOARD_URL }}
+          GRAFANA_API_KEY: ${{ secrets.GRAFANA_API_KEY }}
+        run: |
+          mkdir -p temp
+          curl --fail-with-body --silent --show-error \
+            -H "Authorization: Bearer ${GRAFANA_API_KEY}" \
+            -H "Accept: application/json" \
+            "${GRAFANA_DASHBOARD_URL}" -o temp/dashboard.json
+
+      - name: Update Dashboard
+        run: python3 scripts/update-dashboard.py
+
+      - name: Check For Changes
+        id: changes
+        run: |
+          if git diff --quiet -- "${DASHBOARD}"; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Dashboard is already up to date." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            {
+              echo '## Dashboard diff'
+              echo '```'
+              git diff --stat -- "${DASHBOARD}"
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ steps.gh-app.outputs.token }}
+          APP_SLUG: ${{ steps.gh-app.outputs.app-slug }}
+        run: |
+          bot_id=$(gh api "/users/${APP_SLUG}%5Bbot%5D" --jq .id)
+          git config user.name "${APP_SLUG}[bot]"
+          git config user.email "${bot_id}+${APP_SLUG}[bot]@users.noreply.github.com"
+
+          git switch --force-create "${BRANCH}"
+          git commit --message "feat: update nethermind dashboard" -- "${DASHBOARD}"
+          # The branch is rebuilt from the base branch on every run.
+          git push --force origin "${BRANCH}"
+
+          if [ -n "$(gh pr list --head "${BRANCH}" --state open --json number --jq '.[].number')" ]; then
+            echo "Updated the open pull request for ${BRANCH}." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          printf '%s\n\n%s\n' \
+            'Synced from Grafana Cloud by the `Update Nethermind Dashboard` workflow.' \
+            '`scripts/update-dashboard.py` pinned the title and uid, reset the datasource variables to the local `Prometheus`/`Loki` datasources, cleared the saved variable selections and stripped the Cloud resource metadata.' \
+            > temp/pr-body.md
+
+          gh pr create \
+            --base "${GITHUB_REF_NAME}" \
+            --head "${BRANCH}" \
+            --title "feat: update nethermind dashboard" \
+            --body-file temp/pr-body.md

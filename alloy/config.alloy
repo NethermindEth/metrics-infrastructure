@@ -43,21 +43,24 @@ discovery.docker "nethermind_container" {
 	}
 }
 
+// Label names and values mirror the ones Nethermind attaches to its metrics
+// (Instance comes from --Metrics.NodeName) so the dashboard's $enode and
+// $network filters select the same node in both Prometheus and Loki.
 discovery.relabel "nethermind_log_labels" {
 	targets = discovery.docker.nethermind_container.targets
 
 	rule {
-		target_label = "node"
-		replacement  = coalesce(sys.env("NODE_NAME"), "nethermind")
+		target_label = "Instance"
+		replacement  = coalesce(sys.env("NODE_NAME"), "Nethermind")
 	}
 
 	rule {
-		target_label = "network"
+		target_label = "Network"
 		replacement  = coalesce(sys.env("NETWORK"), "unknown")
 	}
 
 	rule {
-		target_label = "client"
+		target_label = "Client"
 		replacement  = coalesce(sys.env("CLIENT"), "nethermind")
 	}
 }
@@ -88,15 +91,10 @@ prometheus.scrape "nethermind_metrics" {
 prometheus.relabel "nethermind_metric_labels" {
 	forward_to = [prometheus.remote_write.metrics_endpoint.receiver]
 
-	// Nethermind already sets Instance/Network from its own Metrics.NodeName, so
-	// only the extra identifying labels are added here.
+	// Nethermind sets Instance and Network itself, so only Client is added here
+	// to keep metrics and logs labelled the same way.
 	rule {
-		target_label = "node"
-		replacement  = coalesce(sys.env("NODE_NAME"), "nethermind")
-	}
-
-	rule {
-		target_label = "client"
+		target_label = "Client"
 		replacement  = coalesce(sys.env("CLIENT"), "nethermind")
 	}
 }
@@ -111,8 +109,9 @@ prometheus.relabel "nethermind_metric_labels" {
 // local.file_match "nethermind_log_files" {
 // 	path_targets = [{
 // 		__path__ = coalesce(sys.env("NETHERMIND_LOG_PATH"), "/var/log/nethermind/*.log"),
-// 		node     = coalesce(sys.env("NODE_NAME"), "nethermind"),
-// 		client   = coalesce(sys.env("CLIENT"), "nethermind"),
+// 		Instance = coalesce(sys.env("NODE_NAME"), "Nethermind"),
+// 		Network  = coalesce(sys.env("NETWORK"), "unknown"),
+// 		Client   = coalesce(sys.env("CLIENT"), "nethermind"),
 // 	}]
 // }
 
