@@ -10,8 +10,9 @@ services:
       - "--storage.tsdb.path=/prometheus"
       - "--web.console.libraries=/etc/prometheus/console_libraries"
       - "--web.console.templates=/etc/prometheus/consoles"
-      - "--storage.tsdb.retention=200h"
+      - "--storage.tsdb.retention.time=200h"
       - "--web.enable-lifecycle"
+      - "--web.enable-remote-write-receiver"
     restart: unless-stopped
     expose:
       - 9090
@@ -20,14 +21,43 @@ services:
     networks:
       - metrics
 
-  pushgateway:
-    image: prom/pushgateway
-    container_name: pushgateway
+  loki:
+    image: grafana/loki
+    container_name: loki
+    command: "-config.file=/etc/loki/loki-config.yml"
+    volumes:
+      - ./loki/loki-config.yml:/etc/loki/loki-config.yml
+      - ./loki_data:/loki
     restart: unless-stopped
     expose:
-      - 9091
+      - 3100
     ports:
-      - "${NETHERMIND_PUSHGATEWAY_HOST-127.0.0.1}:9091:9091"
+      - "${NETHERMIND_LOKI_HOST-127.0.0.1}:3100:3100"
+    networks:
+      - metrics
+
+  alloy:
+    image: grafana/alloy
+    container_name: alloy
+    # root is needed to read the Docker socket for container log discovery
+    user: root
+    command:
+      - "run"
+      - "--server.http.listen-addr=0.0.0.0:12345"
+      - "/etc/alloy/config.alloy"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    expose:
+      - 12345
+    ports:
+      - "${NETHERMIND_ALLOY_HOST-127.0.0.1}:12345:12345"
     networks:
       - metrics
 
@@ -35,6 +65,9 @@ services:
     image: grafana/grafana
     container_name: grafana
     restart: unless-stopped
+    depends_on:
+      - prometheus
+      - loki
     expose:
       - 3000
     ports:
@@ -50,6 +83,3 @@ services:
 networks:
   metrics:
     name: nethermind-metrics
-
-volumes:
-  prometheus_data: {}
