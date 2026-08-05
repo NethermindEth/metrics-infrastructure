@@ -27,7 +27,7 @@ services:
     command: "-config.file=/etc/loki/loki-config.yml"
     volumes:
       - ./loki/loki-config.yml:/etc/loki/loki-config.yml
-      - loki_data:/loki
+      - ./loki_data:/loki
     restart: unless-stopped
     expose:
       - 3100
@@ -83,6 +83,3 @@ services:
 networks:
   metrics:
     name: nethermind-metrics
-
-volumes:
-  loki_data: {}
