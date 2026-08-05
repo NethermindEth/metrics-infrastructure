@@ -2,3 +2,4 @@ temp
 .env
 prometheus_data
 loki_data
+.DS_Store

@@ -109,26 +109,3 @@ Then run `docker compose up -d` again.
 
 In case any of these interfaces are exposed to the internet (ie. using
 `0.0.0.0`) be sure to restrict access to the services by using a firewall.
-
-## Updating the vendored dashboard
-
-The `Update Nethermind Dashboard` workflow pulls the dashboard from Grafana
-Cloud, sanitizes it and opens a pull request. It needs:
-
-- `secrets.GRAFANA_DASHBOARD_URL` — the v2 resource endpoint of the source
-  dashboard, `https://<stack>.grafana.net/apis/dashboard.grafana.app/v2/namespaces/<namespace>/dashboards/<name>`.
-- `secrets.GRAFANA_API_KEY` — a service account token with dashboard read access.
-- `vars.APP_ID` / `secrets.APP_PRIVATE_KEY` — GitHub App used to open the PR.
-
-`scripts/update-dashboard.py` is what keeps the source stack's details out of
-this repo. It pins the title and uid, resets the datasource variables to the
-local `Prometheus`/`Loki` datasources, clears every saved variable selection and
-drops the Cloud resource metadata. It then refuses to write the file if any
-internal identifier survived or if a panel references a datasource directly
-instead of through `${prometheus_ds}` / `${loki_ds}`.
-
-To sanitize an export by hand:
-
-```
-python3 scripts/update-dashboard.py --export path/to/export.json
-```
