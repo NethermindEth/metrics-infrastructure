@@ -14,6 +14,9 @@ A self-hosted, local monitoring stack for a Nethermind node. A single
 
 * Nethermind `v1.26.0` or later.
 * Docker with Docker Compose plugin installed. ([Installation Guide](https://docs.docker.com/desktop/))
+* Grafana `v13.0.0` or later — the dashboard is stored in the v2 schema
+  (`dashboard.grafana.app/v2`). The bundled `grafana/grafana:latest` image
+  satisfies this; pinning an older image will leave the dashboard unprovisioned.
 
 ## Quick Guide
 
@@ -44,6 +47,11 @@ A self-hosted, local monitoring stack for a Nethermind node. A single
    container (and `NETHERMIND_METRICS_ADDRESS` if your node is not reachable at
    the default `host.docker.internal:8008`). See
    [Node runtime scenarios](#node-runtime-scenarios) below.
+
+   If you run the node with a custom `--Metrics.NodeName`, set `NODE_NAME` to the
+   same value: Nethermind stamps it on every metric as the `Instance` label, and
+   Alloy uses `NODE_NAME` to label the logs, so the dashboard's **Instance**
+   filter only lines both up when they match.
 5. Execute `docker compose up -d`.
 6. Open your local [Grafana](http://localhost:3000) in your browser and log in
    with your configured username and password. Metrics appear on the Nethermind
