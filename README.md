@@ -12,7 +12,7 @@ A self-hosted, local monitoring stack for a Nethermind node. A single
 
 ## Requirements
 
-* Nethermind `v1.26.0` or later.
+* Nethermind `v2.0.0` or later.
 * Docker with Docker Compose plugin installed. ([Installation Guide](https://docs.docker.com/desktop/))
 * Grafana `v13.0.0` or later — the dashboard is stored in the v2 schema
   (`dashboard.grafana.app/v2`). The bundled `grafana/grafana:latest` image
