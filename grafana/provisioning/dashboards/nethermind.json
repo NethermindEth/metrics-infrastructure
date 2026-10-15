@@ -2576,12 +2576,13 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "$__range_s/increase(nethermind_blocks{Instance=~\"$enode\"}[$__range])",
+                        "expr": "(\n    max by (Instance) (max_over_time((timestamp(nethermind_blocks{Instance=~\"$enode\"}) and nethermind_blocks{Instance=~\"$enode\"} > 0)[$__range:]))\n  - min by (Instance) (min_over_time((timestamp(nethermind_blocks{Instance=~\"$enode\"}) and nethermind_blocks{Instance=~\"$enode\"} > 0)[$__range:]))\n)\n/\n(\n    max by (Instance) (max_over_time(nethermind_blocks{Instance=~\"$enode\"}[$__range]))\n  - min by (Instance) (min_over_time((nethermind_blocks{Instance=~\"$enode\"} > 0)[$__range:]))\n  > 0\n)",
                         "format": "time_series",
+                        "instant": true,
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{Instance}} ",
-                        "range": true
+                        "range": false
                       },
                       "version": "v0"
                     },
@@ -2640,7 +2641,7 @@
                 "percentChangeColorMode": "standard",
                 "reduceOptions": {
                   "calcs": [
-                    "max"
+                    "lastNotNull"
                   ],
                   "fields": "",
                   "values": false
