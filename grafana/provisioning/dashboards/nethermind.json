@@ -373,28 +373,6 @@
                     },
                     "refId": "C"
                   }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "${prometheus_ds}"
-                      },
-                      "group": "prometheus",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "editorMode": "code",
-                        "expr": "nethermind_rlp_cache_hits{Instance=~\"$enode\"}",
-                        "interval": "",
-                        "legendFormat": "{{Instance}} TrieStore RLP Cache Hits",
-                        "range": true
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "D"
-                  }
                 }
               ],
               "queryOptions": {},
@@ -636,7 +614,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "nethermind_snapshot_persistence_time{Instance=~\"$enode\"}",
+                        "expr": "nethermind_snapshot_persistence_time_ms{Instance=~\"$enode\"}",
                         "interval": "",
                         "legendFormat": "{{Instance}} Persistence",
                         "range": true
@@ -658,7 +636,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "nethermind_pruning_time{Instance=~\"$enode\"}",
+                        "expr": "nethermind_pruning_time_ms{Instance=~\"$enode\"}",
                         "interval": "",
                         "legendFormat": "{{Instance}} Pruning",
                         "range": true
@@ -680,9 +658,9 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "nethermind_deep_pruning_time{Instance=~\"$enode\"}",
+                        "expr": "nethermind_deep_pruning_time_ms{Instance=~\"$enode\"}",
                         "interval": "",
-                        "legendFormat": "{{Instance}} ",
+                        "legendFormat": "{{Instance}} Deep Pruning",
                         "range": true
                       },
                       "version": "v0"
@@ -755,7 +733,7 @@
                       }
                     ]
                   },
-                  "unit": "short"
+                  "unit": "ms"
                 },
                 "overrides": []
               },
@@ -833,28 +811,6 @@
                       "version": "v0"
                     },
                     "refId": "A"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": true,
-                    "query": {
-                      "datasource": {
-                        "name": "${prometheus_ds}"
-                      },
-                      "group": "prometheus",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "editorMode": "code",
-                        "expr": "nethermind_pruned_nodes_count{Instance=~\"$enode\"}",
-                        "instant": false,
-                        "interval": "",
-                        "legendFormat": "{{Instance}} Pruned"
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "B"
                   }
                 },
                 {
@@ -1186,8 +1142,7 @@
                     "mode": "percentage",
                     "steps": [
                       {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                       },
                       {
                         "color": "semi-dark-orange",
@@ -1459,7 +1414,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "increase(nethermind_p2pbytes_received{Instance=~\"$enode\"}[1m])",
+                        "expr": "sum by (Instance) (increase(nethermind_incoming_p2p_message_bytes{Instance=~\"$enode\"}[1m]))",
                         "interval": "",
                         "legendFormat": "{{Instance}} P2P Received",
                         "range": true
@@ -1481,7 +1436,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "increase(nethermind_p2pbytes_sent{Instance=~\"$enode\"}[1m])",
+                        "expr": "sum by (Instance) (increase(nethermind_outgoing_p2p_message_bytes{Instance=~\"$enode\"}[1m]))",
                         "interval": "",
                         "legendFormat": "{{Instance}} P2P Sent",
                         "range": true
@@ -1583,7 +1538,7 @@
                 }
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -1884,7 +1839,7 @@
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
-                        "expr": "increase(nethermind_pending_transactions_received{Instance=\"$enode\"}[1m])",
+                        "expr": "increase(nethermind_pending_transactions_received{Instance=~\"$enode\"}[1m])",
                         "format": "time_series",
                         "instant": false,
                         "interval": "",
@@ -2500,7 +2455,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -2598,7 +2553,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -2621,12 +2576,13 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "$__range_s/increase(nethermind_blocks{Instance=~\"$enode\"}[$__range])",
+                        "expr": "(\n    max by (Instance) (max_over_time((timestamp(nethermind_blocks{Instance=~\"$enode\"}) and nethermind_blocks{Instance=~\"$enode\"} > 0)[$__range:]))\n  - min by (Instance) (min_over_time((timestamp(nethermind_blocks{Instance=~\"$enode\"}) and nethermind_blocks{Instance=~\"$enode\"} > 0)[$__range:]))\n)\n/\n(\n    max by (Instance) (max_over_time(nethermind_blocks{Instance=~\"$enode\"}[$__range]))\n  - min by (Instance) (min_over_time((nethermind_blocks{Instance=~\"$enode\"} > 0)[$__range:]))\n  > 0\n)",
                         "format": "time_series",
+                        "instant": true,
                         "interval": "",
                         "intervalFactor": 1,
                         "legendFormat": "{{Instance}} ",
-                        "range": true
+                        "range": false
                       },
                       "version": "v0"
                     },
@@ -2668,7 +2624,7 @@
                       }
                     ]
                   },
-                  "unit": "locale"
+                  "unit": "s"
                 },
                 "overrides": []
               },
@@ -2685,7 +2641,7 @@
                 "percentChangeColorMode": "standard",
                 "reduceOptions": {
                   "calcs": [
-                    "max"
+                    "lastNotNull"
                   ],
                   "fields": "",
                   "values": false
@@ -2696,7 +2652,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -2794,7 +2750,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3290,7 +3246,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3375,7 +3331,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3399,7 +3355,7 @@
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
-                        "expr": "last_over_time(((nethermind_pruning_time{Instance=~\"$enode\"} > 0)[7d:]))",
+                        "expr": "nethermind_pruning_time_ms{Instance=~\"$enode\"}",
                         "format": "time_series",
                         "instant": true,
                         "interval": "",
@@ -3448,7 +3404,7 @@
                       }
                     ]
                   },
-                  "unit": "s"
+                  "unit": "ms"
                 },
                 "overrides": []
               },
@@ -3468,7 +3424,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3553,7 +3509,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3577,7 +3533,7 @@
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
-                        "expr": "last_over_time(((nethermind_sync_time{Instance=~\"$enode\"} > 0)[7d:]))",
+                        "expr": "nethermind_sync_time_seconds{Instance=~\"$enode\"}",
                         "format": "time_series",
                         "instant": true,
                         "interval": "",
@@ -3646,7 +3602,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3731,7 +3687,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3816,7 +3772,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3901,7 +3857,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -3925,7 +3881,7 @@
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
-                        "expr": "nethermind_sync_time{Instance=~\"$enode\"}",
+                        "expr": "rate(nethermind_sync_time_seconds{Instance=~\"$enode\"}[1m]) > bool 0",
                         "format": "time_series",
                         "instant": true,
                         "interval": "",
@@ -4010,7 +3966,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -4129,7 +4085,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -4543,9 +4499,10 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "nethermind_db_size{Instance=~\"$enode\"}",
+                        "expr": "max by (Instance, db) (nethermind_db_size{Instance=~\"$enode\"})",
                         "instant": false,
-                        "legendFormat": "{{Instance}} - {{db}}",
+                        "interval": "",
+                        "legendFormat": "{{db}}",
                         "range": true
                       },
                       "version": "v0"
@@ -4624,10 +4581,13 @@
                   "multiLane": false
                 },
                 "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "displayMode": "table",
                   "enableFacetedFilter": false,
-                  "placement": "bottom",
+                  "overflow": "ellipsis",
+                  "placement": "right",
                   "showLegend": true
                 },
                 "tooltip": {
@@ -4637,7 +4597,7 @@
                 }
               }
             },
-            "version": "13.1.0"
+            "version": "13.2.0"
           }
         }
       },
@@ -5798,7 +5758,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_forkchoice_upded_execution_time{Instance=~\"$enode\"})",
+                        "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_forkchoice_updated_execution_time{Instance=~\"$enode\"})",
                         "legendFormat": "{{Instance}} Forkchoice Update",
                         "range": true
                       },
@@ -5931,7 +5891,7 @@
                       "spec": {
                         "disableTextWrap": false,
                         "editorMode": "code",
-                        "expr": "nethermind_number_of_requested_blobs{Instance=~\"$enode\"}",
+                        "expr": "execution_engine_getblobs_requested_total{Instance=~\"$enode\"}",
                         "fullMetaSearch": false,
                         "includeNullMetadata": true,
                         "legendFormat": "{{Instance}} - Requested",
@@ -5956,7 +5916,7 @@
                       "spec": {
                         "disableTextWrap": false,
                         "editorMode": "code",
-                        "expr": "nethermind_number_of_sent_blobs{Instance=~\"$enode\"}",
+                        "expr": "execution_engine_getblobs_available_total{Instance=~\"$enode\"}",
                         "fullMetaSearch": false,
                         "includeNullMetadata": true,
                         "instant": false,
@@ -6392,7 +6352,7 @@
                       "spec": {
                         "disableTextWrap": false,
                         "editorMode": "code",
-                        "expr": "nethermind_get_blobs_requests_success_total{Instance=~\"$enode\"}",
+                        "expr": "execution_engine_getblobs_hit_total{Instance=~\"$enode\"}",
                         "fullMetaSearch": false,
                         "includeNullMetadata": true,
                         "legendFormat": "{{Instance}} - Successes",
@@ -6417,7 +6377,7 @@
                       "spec": {
                         "disableTextWrap": false,
                         "editorMode": "code",
-                        "expr": "nethermind_get_blobs_requests_failure_total{Instance=~\"$enode\"}",
+                        "expr": "execution_engine_getblobs_miss_total{Instance=~\"$enode\"}",
                         "fullMetaSearch": false,
                         "includeNullMetadata": true,
                         "instant": false,
@@ -7651,7 +7611,7 @@
                 "wrapLogMessage": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -7697,7 +7657,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "increase(nethermind_code_db_reads{Instance=~\"$enode\"}[1m])",
+                        "expr": "increase(nethermind_db_reads{Instance=~\"$enode\", db=\"Code\"}[1m])",
                         "instant": false,
                         "legendFormat": "{{Instance}} Reads",
                         "range": true
@@ -7719,7 +7679,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "increase(nethermind_block_infos_db_writes{Instance=~\"$enode\"}[1m])",
+                        "expr": "increase(nethermind_db_writes{Instance=~\"$enode\", db=\"BlockInfos\"}[1m])",
                         "instant": false,
                         "legendFormat": "{{Instance}} Writes",
                         "range": true
@@ -8267,7 +8227,7 @@
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
-                        "expr": "increase(nethermind_pending_transactions_too_far_in_future{Instance=~\"$enode\"}[1m])",
+                        "expr": "increase(nethermind_pending_transactions_nonce_too_far_in_future{Instance=~\"$enode\"}[1m])",
                         "interval": "",
                         "legendFormat": "{{Instance}} Too far in future",
                         "range": true
@@ -9036,7 +8996,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "increase(nethermind_hellos_sent{Instance=~\"$enode\"}[1m])",
+                        "expr": "sum by (Instance) (increase(nethermind_outgoing_p2p_messages{Instance=~\"$enode\", protocol=~\"p2p.*\", message=\"Hello\"}[1m]))",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "{{Instance}} Hellos Sent",
@@ -9059,7 +9019,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "increase(nethermind_hellos_received{Instance=~\"$enode\"}[1m])",
+                        "expr": "sum by (Instance) (increase(nethermind_incoming_p2p_messages{Instance=~\"$enode\", protocol=~\"p2p.*\", message=\"Hello\"}[1m]))",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "{{Instance}} Hellos Received",
@@ -9082,7 +9042,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "increase(nethermind_statuses_sent{Instance=~\"$enode\"}[1m])",
+                        "expr": "sum by (Instance) (increase(nethermind_outgoing_p2p_messages{Instance=~\"$enode\", protocol=~\"eth.*\", message=\"Status\"}[1m]))",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "{{Instance}} Statuses Sent",
@@ -9105,7 +9065,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "increase(nethermind_statuses_received{Instance=~\"$enode\"}[1m])",
+                        "expr": "sum by (Instance) (increase(nethermind_incoming_p2p_messages{Instance=~\"$enode\", protocol=~\"eth.*\", message=\"Status\"}[1m]))",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "{{Instance}} Statuses Received",
@@ -9306,7 +9266,7 @@
                 "wideLayout": true
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -9636,8 +9596,7 @@
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                       },
                       {
                         "color": "red",
@@ -9987,7 +9946,7 @@
                       "spec": {
                         "editorMode": "code",
                         "exemplar": true,
-                        "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_total_memory_size{Instance=~\"$enode\"})",
+                        "expr": "sum by (Instance) (nethermind_db_block_cache_size{Instance=~\"$enode\"}) + sum by (Instance) (nethermind_db_index_filter_size{Instance=~\"$enode\"}) + sum by (Instance) (nethermind_db_memtable_size{Instance=~\"$enode\"})",
                         "instant": false,
                         "interval": "",
                         "legendFormat": "{{Instance}} DB Total Memory"
@@ -10009,7 +9968,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_block_cache_memory_size{Instance=~\"$enode\"})",
+                        "expr": "sum by (Instance) (nethermind_db_block_cache_size{Instance=~\"$enode\"})",
                         "legendFormat": "{{Instance}} DB Blockcache",
                         "range": true
                       },
@@ -10030,7 +9989,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_index_filter_memory_size{Instance=~\"$enode\"})",
+                        "expr": "sum by (Instance) (nethermind_db_index_filter_size{Instance=~\"$enode\"})",
                         "legendFormat": "{{Instance}} DB Index & Filters",
                         "range": true
                       },
@@ -10051,7 +10010,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "max without (BuildTimestamp,Commit,Version) (nethermind_db_memtable_memory_size{Instance=~\"$enode\"})",
+                        "expr": "sum by (Instance) (nethermind_db_memtable_size{Instance=~\"$enode\"})",
                         "legendFormat": "{{Instance}} DB Memtables",
                         "range": true
                       },
@@ -10537,7 +10496,7 @@
                 }
               }
             },
-            "version": "13.2.0"
+            "version": "13.3.0"
           }
         }
       },
@@ -13502,7 +13461,7 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-5m",
+      "from": "now-7d",
       "hideTimepicker": false,
       "timezone": "utc",
       "to": "now"
